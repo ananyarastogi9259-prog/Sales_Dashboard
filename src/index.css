@@ -1,0 +1,75 @@
+:root {
+  --bg-color: #f7f9fc;
+  --text-dark: #1a1e2d;
+  --text-gray: #717a8e;
+  --text-light: #ffffff;
+  --primary: #f26522; /* Voyx Orange */
+  --card-bg: #ffffff;
+  --card-dark: #151a2d;
+  --border-color: #e5e7eb;
+  --skeleton-bg: #e2e8f0;
+  --skeleton-shine: #f8fafc;
+}
+
+body.dark {
+  --bg-color: #0b0f19;
+  --text-dark: #f1f5f9;
+  --text-gray: #94a3b8;
+  --card-bg: #151a2d;
+  --card-dark: #0f1423;
+  --border-color: #1e293b;
+  --skeleton-bg: #1e293b;
+  --skeleton-shine: #334155;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-gray {
+  color: var(--text-gray);
+}
+
+/* Utilities */
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
