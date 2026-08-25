@@ -35,7 +35,17 @@ import {
 } from 'recharts';
 import { useDashboardData } from '../hooks/useDashboardData';
 export default function Dashboard() {
-  const { loading, metrics, leaderboard, topDestinations, dailyChart, monthlyChart } = useDashboardData();
+  const [selectedDate, setSelectedDate] = useState(null);
+  const { loading, metrics, leaderboard, topDestinations, dailyChart, monthlyChart, dashboardDate } = useDashboardData(selectedDate);
+
+  const formatDateForInput = (date) => {
+    if (!date) return '';
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
   const [isMounted, setIsMounted] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -201,7 +211,20 @@ export default function Dashboard() {
         <header className="top-header">
           <div className="header-title-area">
             <h2 style={{ fontSize: '1.2rem', fontWeight: 700 }}>Sales Analytics</h2>
-            <div className="date-pill">30 Jun 2026</div>
+            <input 
+              type="date"
+              className="date-pill"
+              value={formatDateForInput(selectedDate || dashboardDate)}
+              onChange={(e) => {
+                if (e.target.value) {
+                  // Create date from YYYY-MM-DD input, considering timezone offsets
+                  const [year, month, day] = e.target.value.split('-');
+                  setSelectedDate(new Date(year, month - 1, day));
+                } else {
+                  setSelectedDate(null);
+                }
+              }}
+            />
           </div>
           
           <div className="header-actions">

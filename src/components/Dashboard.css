@@ -190,13 +190,17 @@
 }
 
 .date-pill {
-  background: white;
+  background: var(--card-bg);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-gray);
+  color: var(--text-dark);
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color);
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .btn {
